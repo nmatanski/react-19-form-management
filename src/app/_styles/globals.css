@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -41,6 +39,10 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  /* TW custom vars */
+  --shadow-cyan: var(--tw-glow-cyan);
+  --shadow-pink: var(--tw-glow-pink);  
 }
 
 :root {
@@ -76,6 +78,10 @@
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
   --sidebar-ring: oklch(0.705 0.015 286.067);
+
+  /* TW custom vars (theme-agnostic - do NOT use with dark:<property-custom-color> */
+  --tw-glow-cyan: 0 0 12px 2px rgb(0, 255, 255, 0.2);
+  --tw-glow-pink: 0 0 14px 3px rgb(255, 105, 180, 0.2);
 }
 
 .dark {
