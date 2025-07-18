@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { PropsWithChildren } from "react";
+import { ThemeToggle } from "../_components/ThemeToggle";
+import { ThemeProvider } from "../_providers/ThemeProvider";
 import "../_styles/globals.css";
 
 const geistSans = Geist({
@@ -24,9 +26,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="absolute top-3 right-3 z-50 opacity-67 hover:opacity-100 transition-opacity">
+            <ThemeToggle />
+          </div>
+
+          <div className="items-center justify-items-center min-h-screen p-8 pb-20 sm:p-20">
+            {children}
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );
